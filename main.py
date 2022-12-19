@@ -4,7 +4,7 @@ import random
 # Připravíme PyGame
 pygame.init()
 pygame.display.set_caption("  Get fuel")
-size = (490, 320)
+size = (320, 190)
 screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 
@@ -17,7 +17,7 @@ pineapple = pygame.transform.scale(pineapple, (40, 40))
 Trava = pygame.image.load("Tráva.png")
 Trava = pygame.transform.scale(Trava,(400, 265))
 dlaždice = pygame.Surface((40, 40))
-dlaždice.set_alpha(128)
+dlaždice.set_alpha(0)
 dlaždice.fill((255, 255, 255))
 
 # screen.blit(turtle, game_to_screen(zx, zy))
@@ -25,8 +25,8 @@ dlaždice.fill((255, 255, 255))
 
 # Připravíme si obrázek
 
-WIDTH = 9
-HEIGHT = 6
+WIDTH = 5
+HEIGHT = 5
 zx = 2
 zy = 1
 
@@ -52,9 +52,10 @@ def animate(nx, ny):
         screen.blit(rotated_turtle, (x, y))
         pygame.display.update()
         t = t + clock.tick()
-
+       
     zx = nx
     zy = ny
+   
 
 def draw_scene():
   screen.fill(background)
@@ -64,8 +65,13 @@ def draw_scene():
            screen.blit(dlaždice,game_to_screen(x, y))          
   screen.blit(pineapple, game_to_screen(pa_x, pa_y))
 
+  font =  pygame.font.Font(None, 42);
+  text = font.render(f"Score: {score}", True, (0, 0, 0), (0, 250, 0))
+  screen.blit(text, (0, 0))
+ 
 pa_x = 0
 pa_y = 0
+score = 0
 
 rotated_turtle = pygame.transform.rotate(turtle, 0)
 while True:
@@ -98,3 +104,4 @@ while True:
     if (zx, zy) == (pa_x, pa_y):
         pa_x = random.randrange(0, WIDTH)
         pa_y = random.randrange(0, HEIGHT)
+        score = score + 1
