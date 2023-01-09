@@ -25,8 +25,8 @@ dlaždice.fill((255, 255, 255))
 
 # Připravíme si obrázek
 
-WIDTH = 5
-HEIGHT = 5
+WIDTH = 4
+HEIGHT = 4
 zx = 2
 zy = 1
 
